@@ -1,0 +1,21 @@
+% Parámetros
+frecuencia = 50;  % Frecuencia en Hz
+amplitud = 230;   % Amplitud de la tensión en V
+angulo = 0;       % Ángulo de fase en grados
+periodos = 3;     % Número de periodos a graficar
+
+% Generar tensiones trifásicas balanceadas
+t = 0:1/10000:(1/frecuencia)*periodos;  % Vector de tiempo con tres periodos
+voltageA = amplitud * sqrt(2) * sin(2 * pi * frecuencia * t + deg2rad(angulo));
+voltageB = amplitud * sqrt(2) * sin(2 * pi * frecuencia * t + deg2rad(angulo - 120));
+voltageC = amplitud * sqrt(2) * sin(2 * pi * frecuencia * t + deg2rad(angulo + 120));
+
+% Plotear las tensiones en un solo gráfico
+%plot(t, voltageA, 'r', 'linewidth', 2, t, voltageB, 'g', t, voltageC, 'b');
+plot(t, voltageA, 'r', 'linwd')
+title('Tensiones Trifásicas');
+xlabel('Tiempo (s)');
+ylabel('Tensión (V)');
+legend('Fase R', 'Fase S', 'Fase T');
+grid on;
+axis tight;
